@@ -2,16 +2,24 @@
     display:flex;
     justify-content:space-between;
 }
-/* body{
-    /* background-color: #121212; */
-    /* font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+#time_countdown{
+    margin-right: 75px;
 }
-#containter{
+
+h2{
+
+}
+body{
+     background-color: white; 
+     font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+#container{
     max-width: 400px;
     margin: 0 auto;
     margin-top: 20vh;
-}
-#card{
+
+.card{
     background-color: white;
 }
 
@@ -41,4 +49,4 @@ button{
     padding: 3px 10px;
     color: white;
     border: 0;
-} */ */
+} 
