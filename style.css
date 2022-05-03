@@ -21,9 +21,9 @@ body{
 }
 
 .hi_score{
-    position:absolute;
-    top: 10px;
-    left: 10px;
+    position:relative;
+    top: 25px;
+    /* left: 10px; */
 }
 
 .feedback{
