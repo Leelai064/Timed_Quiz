@@ -8,7 +8,10 @@
 }
 
 h2{
-
+text-align: center;
+}
+p{
+    text-align:center;
 }
 body{
      background-color: white; 
@@ -18,6 +21,7 @@ body{
     max-width: 400px;
     margin: 0 auto;
     margin-top: 20vh;
+}
 
 .card{
     background-color: white;
@@ -28,18 +32,21 @@ body{
     top: 15px;
 }
 
-
+button:focus,
 button:hover{
     background-color: grey;
 }
 
 h1{
     display: center;
+}
+.cntr_btn{
+    display:flex;
+    justify-content: center;
+    align-items: center;
 
 }
-
 button{
-    display: inline-block;
     margin: 10px;
     cursor: pointer;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
@@ -47,6 +54,5 @@ button{
     border-radius: 3px;
     transition: background-color 0.2s;
     padding: 3px 10px;
-    color: white;
     border: 0;
 } 
