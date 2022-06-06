@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <meta name="viewport" content="weidth=device-width, intial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible">
     <title>Timed Coding Quiz!</title>
 
@@ -16,32 +16,41 @@
             <!-- <div class="timer"></div> -->
             <div class="Header">
                 <div id="hi_score">High Scores:</div>
-                <span id="time_countdown">Time Left: 75 </span>
+                <span id="time_countdown">Time:</span>
             </div>
             <!-- <div class="time_line"></div> -->
         </header>
 
 
-
+     <!-- start card  -->
         <div class="card">
             <div class="card_filler">
                 <div id = "container">
-                    <h2 class= "Title">Coding Quiz Challenge</h2>
-
-                    <p>Studying to become a full stack developer requires not only knowing code, but also knowing the terminology or computer science behind the code. Lets test your knowledge in this funt timed Quiz!</p>
-
                     <span id="count"></span>
-                    <div class=" start_btn">
+                    <div id="questionslist">
+                     <h2 class= "Title">Coding Quiz Challenge</h2>
+                        <p>Studying to become a full stack developer requires not only knowing code, but also knowing the terminology or computer science behind the code. Lets test your knowledge in this funt timed Quiz!</p>
+                        
+                        <!-- Timer -->
+                        <div id="start_btn">
                         <button onclick="begin()">Begin Quiz</button>
                     </div>
-                    
+                </div>
+                <div id="renew"style="display:none;" >
+                    <p><button id=btn0 class=choicebtn></button></p>
+                    <p><button id=btn1 class=choicebtn></button></p>
+                    <p><button id=btn2 class=choicebtn></button></p>
+                    <p><button id=btn3 class=choicebtn></button></p>
+                    <hr id="seperated-line" style = "display:none;"></hr>
+                    <div id=answer_checkpoint style= "display: none;"></div>
+                </div>
+             </div>
 
-                 </div>
-
-            </div>
         </div>
+    </div>
     
-<script src="script.js"></script>
+    <script src="script.js"></script>
+    <script src="questions.js"></script>
 </body>
 
 </html>

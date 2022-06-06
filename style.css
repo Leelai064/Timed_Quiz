@@ -40,7 +40,7 @@ button:hover{
 h1{
     display: center;
 }
-.start_btn{
+#start_btn{
     display:flex;
     justify-content: center;
     align-items: center;
@@ -56,3 +56,4 @@ button{
     padding: 3px 10px;
     border: 0;
 } 
+
