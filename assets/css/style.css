@@ -1,63 +1,17 @@
-.Header{
-    display:flex;
-    justify-content:space-between;
+.title{
+   text-align: center;
+   /* left: 250px; */
 }
-
-#timeCountdown{
-    margin-right: px;
-}
-
-h2{
-text-align: center;
-}
-p{
-    text-align:center;
-}
-body{
-     background-color: white; 
-     font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-#container{
-    max-width: 400px;
-    margin: 0 auto;
-    margin-top: 20vh;
-}
-
-.card{
-    background-color: white;
-}
-
-.hiScore{
-    position:absolute;
-    top: 15px;
-}
-
-#beginBtn:focus,
-#beginBtn:hover{
-    background-color: grey;
-}
-
-h1{
-    display: center;
-}
-#startBtnContainer{
-    display:flex;
-    justify-content: center;
-    align-items: center;
-
+#startContainer
+{
+    text-align: center;
+    max-width: 500px;
+    position: relative;
+    left: 650px;
+    border: 2px solid #121212;
+    border-radius: 25px;
+    padding: 50px;
 }
 #beginBtn{
-    margin: 10px;
-    cursor: pointer;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
-    background-color:aqua;
-    border-radius: 3px;
-    transition: background-color 0.2s;
-    padding: 3px 10px;
-    border: 0;
-} 
-
-.choiceBtn{
-    background-color:aqua;
-
+    top: 15px;
 }

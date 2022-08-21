@@ -31,19 +31,58 @@
 
 
     <!-- start card container  -->
-    <section class="hero has-background-link-light is-fullheight">
+    <section class="hero has-background-white-bis is-fullheight">
         <div class="hero-body">
-            <div class="container has-background-link-light ">
+            <div class="container has-background-link-light show" id="startContainer">
                 <h1 class="title">Coding Quiz Challenge</h1>
                 <p>Studying to become a full stack developer requires not only knowing code, but also knowing the
                     terminology or computer science behind the code. Lets test your knowledge in this fun timed Quiz!
                 </p>
-                <button class=" button is-success is-light" id='beginBtn'>Begin Quiz</button>
+                <button class=" button is-success" id='beginBtn'>Begin Quiz</button>
             </div>
             <!-- Quiz Container -->
-        <div class=" container has-background-link-light"
+            <div class=" container has-background-link-light hide" id="quiz">
+                <h1 id="questionName"></h1>
+                <div class="container">
+                    <div class="row">
+                        <button class="button is-link is-outlined" id='0'></button>
+                    </div>
+                    <div class="row">
+                        <button class="button is-link is-outlined" id='1'></button>
+                    </div>
+                    <div class="row">
+                        <button class="button is-link is-outlined" id='2'></button>
+                    </div>
+                    <div class="row">
+                        <button class="button is-link is-outlined" id='3'></button>
+                    </div>
+                </div>
+            </div>
+            <!-- Quiz Container Ends -->
+
+            <!-- Inputing Final score Container Begins -->
+            <div class=" container has-background-link-light hide" id="selectedScores">
+                <h1>You have completed the quiz!!</h1>
+                <p>Your final score: <span id="finalScore"></span></p>
+                <p> Enter your initials: <input type="text " id="initials"></p>
+                <button class=" button is-success" id='submitBtn'>Submit</button>
+            </div>
+            <!-- Inputing Final score Container Ends-->
+
+            <!-- Highscore Container Begins -->
+            <div class=" container has-background-link-light hide" id="highScore">
+                <h1><strong>Highscores: </strong></h1>
+                <div class="container" id="scoreList"></div>
+                <p>Your final score: <span id="finalScore"></span></p>
+                <p> Enter your initials: <input type="text " id="initials"></p>
+                <button class=" button is-warning" id='restartBtn'>Restart</button>
+                <button class=" button is-danger" id='clearBtn'>Clear Scores</button>
+            </div>
+            <!-- Highscore Container Ends-->
 
         </div>
+
+
     </section>
 
 
