@@ -20,6 +20,7 @@ const highScoreContainerEl = document.querySelector('#highScoreContainer');
 const scoreListEl = document.querySelector('#scoreList');
 const restartButtonEl = document.querySelector('#restartBtn');
 const clearButtonEl = document.querySelector('#clearBtn');
+const highScoreLinkEl = document.querySelector('#highScoreLink');
 //Document as a whole Varibales (Universal)
 var finalScore = 0;
 var currentQArray = 0;
@@ -30,7 +31,12 @@ var Elapsedtime = 0;
 // var time = questions.length * 15;
 
 //Eventlisterners/Buttons listed 5 buttons onClicks needed!!!!!!!!!!!!!!
-
+highScoreLinkEl.addEventListener("click", function(){
+    hide(startContainerEl);
+    hide(quizContainerEl);
+    hide(scoresContainerEl);
+    show(highScoreContainerEl);
+});
 BeginButton.addEventListener("click", function () {
     hide(startContainerEl);
     show(quizContainerEl);
@@ -49,16 +55,19 @@ submitButtonEl.addEventListener("click",function(){
     var highScores = [];
     let initialValue = initialsEl.value.trim();
     if(initialValue){
-        let usersScore =[{usersName: initialValue, usersScore: finalScore}];
+       // let usersScore =[{usersName: initialValue, usersScore: finalScore}];
+        let usersScore = {usersName: initialValue, usersScore: finalScore};
         initialsEl.value = '';
         highScores = JSON.parse(localStorage.getItem("finalScore")) || [];
-        usersScore.push('#highScore');
+        //usersScore.push('#highScore');
+        highScores.push(usersScore);
         console.log(usersScore);
-        localStorage.setItem("finalScore",JSON.stringify(highScoreContainerEl));
+        localStorage.setItem("finalScore",JSON.stringify(highScores));
         show(highScoreContainerEl);
         renderHighScores();
         fullReset();
     }
+    hide(scoresContainerEl);
 });
 
 //Resart button that resets to the startContainerEl
@@ -73,6 +82,7 @@ clearButtonEl.addEventListener("click", function () {
     highScores = [];
     localStorage.setItem("finalScore", JSON.stringify(highScores));
     renderHighScores()
+    hide(scoresContainerEl);
 });
 
 
@@ -184,11 +194,13 @@ function renderHighScores(){
     scoreListEl.innerHTML = "";
     show(scoresContainerEl);
     highScores = JSON.parse(localStorage.getItem("finalScore"));
+    console.log(highScores)
     for (let i = 0;i < highScores.length; i++){
-        let scoreEl = document.createElement("div");
-        scoreEl.className +=
-        scoreEl.setAttribute()
-        scoreEl.textContent = `${(i + 1)}. ${highScores[i].userName} - ${highScores[i].userScore}`;
+        let scoreEl = document.createElement("li");
+       // scoreEl.className +=
+        scoreEl.setAttribute("id", i)
+        scoreEl.textContent = `${(i + 1)}. ${highScores[i].usersName} - ${highScores[i].usersScore}`;
+        console.log();
         scoreListEl.appendChild(scoreEl);
     }
 
