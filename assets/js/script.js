@@ -47,7 +47,7 @@ if (e.target.matches("button")){
 
 //Clear Button that resets information saved in localstorage
 clearButtonEl.addEventListener("onClick", function(){
-    highScores[];
+    highScores = [];
     localStorage.setItem("finalScore", JSON.stringify(highScores));
     renderHighScores()
 })
