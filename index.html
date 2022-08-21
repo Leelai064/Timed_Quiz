@@ -23,7 +23,7 @@
                 <div class="column"></div>
                 <div class="column"></div>
                 <div class="column"></div>
-                <div class="column  is-half is-offset-5" id="timeCountdown"> Time: <span id="timer">0</span></div>
+                <div class="column  is-half is-offset-5"> Time: <span id="timeCountdown">0</span></div>
             </div>
         </div>
         <!-- <div class="time_line"></div> -->
@@ -33,6 +33,8 @@
     <!-- start card container  -->
     <section class="hero has-background-white-bis is-fullheight">
         <div class="hero-body">
+
+            <!-- Introduction Landing Page Begins -->
             <div class="container has-background-link-light show" id="startContainer">
                 <h1 class="title">Coding Quiz Challenge</h1>
                 <p>Studying to become a full stack developer requires not only knowing code, but also knowing the
@@ -40,10 +42,12 @@
                 </p>
                 <button class=" button is-success" id='beginBtn'>Begin Quiz</button>
             </div>
+            <!-- Introduction Landing Page Begins -->
+
             <!-- Quiz Container -->
-            <div class=" container has-background-link-light hide" id="quiz">
+            <div class=" container has-background-link-light hide" id="quizContainer">
                 <h1 id="questionName"></h1>
-                <div class="container">
+                <div class="container" id="userAnswer">
                     <div class="row">
                         <button class="button is-link is-outlined" id='0'></button>
                     </div>
@@ -61,7 +65,7 @@
             <!-- Quiz Container Ends -->
 
             <!-- Inputing Final score Container Begins -->
-            <div class=" container has-background-link-light hide" id="selectedScores">
+            <div class=" container has-background-link-light hide" id="scoresContainer">
                 <h1>You have completed the quiz!!</h1>
                 <p>Your final score: <span id="finalScore"></span></p>
                 <p> Enter your initials: <input type="text " id="initials"></p>
@@ -70,11 +74,9 @@
             <!-- Inputing Final score Container Ends-->
 
             <!-- Highscore Container Begins -->
-            <div class=" container has-background-link-light hide" id="highScore">
-                <h1><strong>Highscores: </strong></h1>
+            <div class=" container has-background-link-light hide" id="highScoreContainer">
+                <h1><strong>Highscores:</strong></h1>
                 <div class="container" id="scoreList"></div>
-                <p>Your final score: <span id="finalScore"></span></p>
-                <p> Enter your initials: <input type="text " id="initials"></p>
                 <button class=" button is-warning" id='restartBtn'>Restart</button>
                 <button class=" button is-danger" id='clearBtn'>Clear Scores</button>
             </div>
@@ -84,8 +86,6 @@
 
 
     </section>
-
-
 
     <!-- Connecting my Javascript files and Jquery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
