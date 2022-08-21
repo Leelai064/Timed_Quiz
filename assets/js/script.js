@@ -17,7 +17,7 @@ const submitButtonEl = document.querySelector('#submitBtn');
 
 //Highscore Variables
 const highScoreContainerEl = document.querySelector('#highScoreContainer');
-const scoreLisElt = document.querySelector('#scoreList');
+const scoreListEl = document.querySelector('#scoreList');
 const restartButtonEl = document.querySelector('#restartBtn');
 const clearButtonEl = document.querySelector('#clearBtn');
 //Document as a whole Varibales (Universal)
@@ -35,7 +35,7 @@ BeginButton.addEventListener("click", function () {
     hide(startContainerEl);
     show(quizContainerEl);
     beginQuiz();
-    renderQuestion();
+    renderCycledQs();
 });
 //Questions Button
 userAnswerEl.addEventListener("click", function (e) {
@@ -46,12 +46,12 @@ userAnswerEl.addEventListener("click", function (e) {
 });
 //Submittion Button that grabs users finalScore from local storage and renders to display!!
 submitButtonEl.addEventListener("click",function(){
-    let initialValue = initialsEl.ariaValueMax.trim();
+    let initialValue = initialsEl.value.trim();
     if(initialValue){
         let usersScore = {usersName: initialValue, usersScore: finalScore};
         initialsEl.value = '';
-        highScoreContainerEl = JSON.parse(localStorage.getItem("finalScore")) || [];
-        highScoreContainerEl.push(usersScore);
+        highScores = JSON.parse(localStorage.getItem("finalScore")) || [];
+        highScores .push(usersScore);
         localStorage.setItem("finalScore",JSON.stringify(highScoreContainerEl));
         hide(scoresContainerEl);
         renderHighScores();
@@ -140,10 +140,10 @@ function displayMessage(alert) {
     alertEl.textContent = alert;
     document.querySelector(".hero-body").appendChild(alertDivider);
     document.querySelector(".hero-body").appendChild(alertEl);
-    alertDissappear(function () {
+    setTimeout(function () {
         alertDivider.remove();
         alertEl.remove();
-    }, 4000);
+    }, 2000);
 
     // 4 Second display before disappearance
 }
@@ -160,6 +160,30 @@ function show(element) {
 function hide(element) {
 
     element.style.display = "none";
+
+}
+
+//Rendering questions through Array
+
+function renderCycledQs(){
+    questionAskedEl.textContent = questions[currentQArray].title;
+    for (i = 0; i < userAnswerEl.children.length; i ++){
+        userAnswerEl.children[i].children[0].textContent = `${(i + 1)}: ${questions[currentQArray].choices[i]}`;
+    }
+
+}
+
+function renderHighScores(){
+    scoreListEl.innerHTML = "";
+    show(highScoreContainerEl);
+    highScores = JSON.parse(localStorage.getItem(""));
+    for (let i = 0;i < highScores.length; i++){
+        let scoreEl = document.createElement("div");
+        scoreEl.className +=
+        scoreEl.setAttribute()
+        scoreEl.textContent = '${(i + 1)}. ${highScores[i].userName} - ${highScores[i].userScore}';
+        scoreListEl.appendChild(scoreEl);
+    }
 
 }
 
