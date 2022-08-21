@@ -27,52 +27,72 @@ var highScores = [];
 var interval;
 var timeGiven = 75;
 var Elapsedtime = 0;
-var time = questions.length * 15;
+// var time = questions.length * 15;
 
 //Eventlisterners/Buttons listed 5 buttons onClicks needed!!!!!!!!!!!!!!
 
-BeginButton.addEventListener("onClick",function(){
+BeginButton.addEventListener("click", function () {
     hide(startContainerEl);
     show(quizContainerEl);
     beginQuiz();
     renderQuestion();
-})
+});
 //Questions Button
-userAnswerEl.addEventListener("onClick",function(e){
-if (e.target.matches("button")){
+userAnswerEl.addEventListener("click", function (e) {
+    if (e.target.matches("button")) {
+        answerMatchup(e.target);
+        questioningBegins();
+    }
+});
+//Submittion Button that grabs users finalScore from local storage and renders to display!!
+submitButtonEl.addEventListener("click",function(){
+    let initialValue = initialsEl.ariaValueMax.trim();
+    if(initialValue){
+        let usersScore = {usersName: initialValue, usersScore: finalScore};
+        initialsEl.value = '';
+        highScoreContainerEl = JSON.parse(localStorage.getItem("finalScore")) || [];
+        highScoreContainerEl.push(usersScore);
+        localStorage.setItem("finalScore",JSON.stringify(highScoreContainerEl));
+        hide(scoresContainerEl);
+        renderHighScores();
+        fullReset();
+    }
+});
 
-}
-})
 //Resart button that resets to the startContainerEl
+clearButtonEl.addEventListener("click",function(){
+    hide(highScoreContainerEl);
+    show(startContainerEl);
+});
+
 
 //Clear Button that resets information saved in localstorage
-clearButtonEl.addEventListener("onClick", function(){
+clearButtonEl.addEventListener("click", function () {
     highScores = [];
     localStorage.setItem("finalScore", JSON.stringify(highScores));
     renderHighScores()
-})
-//Submittion Button that grabs users finalScore from local storage and renders to display!!
+});
 
 
 //Once the button has been clicked. The timer algorithm begins
 
-function beginQuiz (){
-    interval = setInterval (function(){
+function beginQuiz() {
+    interval = setInterval(function () {
         Elapsedtime++;
-        timerEl.textContent = timeGiven -Elapsedtime;
-        if (Elapsedtime >= timeGiven){
+        timerEl.textContent = timeGiven - Elapsedtime;
+        if (Elapsedtime >= timeGiven) {
             currentQ = questions.length;
             questioningBegins();
         }
 
-    },1000);
+    }, 1000);
 
     timerEl.textContent = timeGiven;
 
-    questioningBegins ();
+    questioningBegins();
 }
 
-function endQuiz(){
+function endQuiz() {
     clearInterval(interval);
 }
 
@@ -80,32 +100,32 @@ function endQuiz(){
 
 //Question algorithm
 
-function questioningBegins(){
-    currentQArray++; 
-    if (currentQArray <questions.length){
+function questioningBegins() {
+    currentQArray++;
+    if (currentQArray < questions.length) {
         renderCycledQs();
     }
-    else{
+    else {
         endQuiz();
         if ((timeGiven - Elapsedtime) > 0)
-        highScores += (timeGiven - Elapsedtime);
+            highScores += (timeGiven - Elapsedtime);
 
         hide(quizContainerEl);
         show(highScoreContainerEl);
         timerEl.textContent = 0;
 
     }
-   
+
 }
 
 //Note to self when question is answered correctly add 15 seconds
 
-function answerMatchup (answer){
-    if (questions[currentQArray].answer ==  questions[currentQArray].choices[answer.id]){
+function answerMatchup(answer) {
+    if (questions[currentQArray].answer == questions[currentQArray].choices[answer.id]) {
         score += 5;
         displayMessage("Correct Answer!");
     }
-    else{
+    else {
         Elapsedtime -= 10;
         displayMessage("Incorrect Answer!");
     }
@@ -114,13 +134,13 @@ function answerMatchup (answer){
 
 //function for displaying the answerMatchup messages
 
-function displayMessage(alert){
+function displayMessage(alert) {
     let alertDivider = document.createElement("hr");
     let alertEl = document.createElement("div");
     alertEl.textContent = alert;
     document.querySelector(".hero-body").appendChild(alertDivider);
     document.querySelector(".hero-body").appendChild(alertEl);
-    alertDissappear(function(){
+    alertDissappear(function () {
         alertDivider.remove();
         alertEl.remove();
     }, 4000);
@@ -131,14 +151,23 @@ function displayMessage(alert){
 //Now we need to hide and show our elements they need functions. This can also be done another way by adding this to each section class in the HTML file.
 
 //Displayed Element
-function show(element){
+function show(element) {
 
     element.style.display = "block";
 
 }
 //Hidden Element
-function hide(element){
+function hide(element) {
 
     element.style.display = "none";
 
+}
+
+//Clear button function resets to startContainerEl
+
+function fullReset(){
+    finalScore = 0;
+    currentQArray = 0;
+    Elapsedtime = 0;
+    timerEl.textContent = 0;
 }
