@@ -46,21 +46,23 @@ userAnswerEl.addEventListener("click", function (e) {
 });
 //Submittion Button that grabs users finalScore from local storage and renders to display!!
 submitButtonEl.addEventListener("click",function(){
+    var highScores = [];
     let initialValue = initialsEl.value.trim();
     if(initialValue){
-        let usersScore = {usersName: initialValue, usersScore: finalScore};
+        let usersScore =[{usersName: initialValue, usersScore: finalScore}];
         initialsEl.value = '';
         highScores = JSON.parse(localStorage.getItem("finalScore")) || [];
-        highScores .push(usersScore);
+        usersScore.push('#highScore');
+        console.log(usersScore);
         localStorage.setItem("finalScore",JSON.stringify(highScoreContainerEl));
-        hide(scoresContainerEl);
+        show(highScoreContainerEl);
         renderHighScores();
         fullReset();
     }
 });
 
 //Resart button that resets to the startContainerEl
-clearButtonEl.addEventListener("click",function(){
+restartButtonEl.addEventListener("click",function(){
     hide(highScoreContainerEl);
     show(startContainerEl);
 });
@@ -76,7 +78,12 @@ clearButtonEl.addEventListener("click", function () {
 
 //Once the button has been clicked. The timer algorithm begins
 
+hide(quizContainerEl);
+hide(scoresContainerEl);
+hide(highScoreContainerEl);
+
 function beginQuiz() {
+   
     interval = setInterval(function () {
         Elapsedtime++;
         timerEl.textContent = timeGiven - Elapsedtime;
@@ -111,7 +118,7 @@ function questioningBegins() {
             highScores += (timeGiven - Elapsedtime);
 
         hide(quizContainerEl);
-        show(highScoreContainerEl);
+        show(scoresContainerEl);
         timerEl.textContent = 0;
 
     }
@@ -122,7 +129,7 @@ function questioningBegins() {
 
 function answerMatchup(answer) {
     if (questions[currentQArray].answer == questions[currentQArray].choices[answer.id]) {
-        score += 5;
+        finalScore += 5;
         displayMessage("Correct Answer!");
     }
     else {
@@ -143,7 +150,7 @@ function displayMessage(alert) {
     setTimeout(function () {
         alertDivider.remove();
         alertEl.remove();
-    }, 2000);
+    }, 1000);
 
     // 4 Second display before disappearance
 }
@@ -175,13 +182,13 @@ function renderCycledQs(){
 
 function renderHighScores(){
     scoreListEl.innerHTML = "";
-    show(highScoreContainerEl);
-    highScores = JSON.parse(localStorage.getItem(""));
+    show(scoresContainerEl);
+    highScores = JSON.parse(localStorage.getItem("finalScore"));
     for (let i = 0;i < highScores.length; i++){
         let scoreEl = document.createElement("div");
         scoreEl.className +=
         scoreEl.setAttribute()
-        scoreEl.textContent = '${(i + 1)}. ${highScores[i].userName} - ${highScores[i].userScore}';
+        scoreEl.textContent = `${(i + 1)}. ${highScores[i].userName} - ${highScores[i].userScore}`;
         scoreListEl.appendChild(scoreEl);
     }
 
