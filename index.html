@@ -7,6 +7,7 @@
     <title>Timed Coding Quiz!</title>
 
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 </head>
 
 <body>
@@ -15,8 +16,8 @@
         <header>
             <!-- <div class="timer"></div> -->
             <div class="Header">
-                <div id="hi_score">High Scores:</div>
-                <span id="time_countdown">Time:</span>
+                <div id="hiScore">High Scores:</div>
+                <span id="timeCountdown">Time:</span>
             </div>
             <!-- <div class="time_line"></div> -->
         </header>
@@ -24,33 +25,30 @@
 
      <!-- start card  -->
         <div class="card">
-            <div class="card_filler">
+            <div class="cardFiller">
                 <div id = "container">
                     <span id="count"></span>
-                    <div id="questionslist">
+                    <div id="questionsList">
                      <h2 class= "Title">Coding Quiz Challenge</h2>
                         <p>Studying to become a full stack developer requires not only knowing code, but also knowing the terminology or computer science behind the code. Lets test your knowledge in this funt timed Quiz!</p>
                         
                         <!-- Timer -->
-                        <div id="start_btn">
-                        <button onclick="begin()">Begin Quiz</button>
+                        <div id="startBtnContainer">
+                        <button id='beginBtn' onclick="begin()">Begin Quiz</button>
                     </div>
                 </div>
                 <div id="renew"style="display:none;" >
-                    <p><button id=btn0 class=choicebtn></button></p>
-                    <p><button id=btn1 class=choicebtn></button></p>
-                    <p><button id=btn2 class=choicebtn></button></p>
-                    <p><button id=btn3 class=choicebtn></button></p>
-                    <hr id="seperated-line" style = "display:none;"></hr>
-                    <div id=answer_checkpoint style= "display: none;"></div>
+                
+                    <hr id="seperatedLine" style = "display:none;"></hr>
+                    <div id=answerCheckpoint style= "display: none;"></div>
                 </div>
              </div>
 
         </div>
     </div>
-    
-    <script src="script.js"></script>
     <script src="questions.js"></script>
+    <script src="script.js"></script>
+    <script src = "finalScores.js"></script>
 </body>
 
 </html>

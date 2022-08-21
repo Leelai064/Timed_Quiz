@@ -3,7 +3,7 @@
     justify-content:space-between;
 }
 
-#time_countdown{
+#timeCountdown{
     margin-right: px;
 }
 
@@ -27,26 +27,26 @@ body{
     background-color: white;
 }
 
-.hi_score{
+.hiScore{
     position:absolute;
     top: 15px;
 }
 
-button:focus,
-button:hover{
+#beginBtn:focus,
+#beginBtn:hover{
     background-color: grey;
 }
 
 h1{
     display: center;
 }
-#start_btn{
+#startBtnContainer{
     display:flex;
     justify-content: center;
     align-items: center;
 
 }
-button{
+#beginBtn{
     margin: 10px;
     cursor: pointer;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
@@ -57,3 +57,7 @@ button{
     border: 0;
 } 
 
+.choiceBtn{
+    background-color:aqua;
+
+}
