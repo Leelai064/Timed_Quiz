@@ -2,16 +2,41 @@
    text-align: center;
    /* left: 250px; */
 }
-#startContainer
+body{
+    background-color: #84a6ce;
+}
+.hero-body
 {
+    background-color: #eff1fa;
     text-align: center;
     max-width: 500px;
-    position: relative;
-    left: 650px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
     border: 2px solid #121212;
     border-radius: 25px;
-    padding: 50px;
+    
 }
-#beginBtn{
+.answerCheck{
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%,-70%);
+    position:absolute;
+    text-align: center;
+    font-weight: 600;
+}
+#userAnswer{
+    text-align: left;
+}
+/* buttons within hero spacing css */
+#beginBtn,
+#submitBtn,
+#clearBtn,
+#restartBtn{
     top: 15px;
+}
+/* answering buttons css */
+.row{
+    margin-bottom: 5px;
 }

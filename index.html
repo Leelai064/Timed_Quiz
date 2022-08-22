@@ -23,6 +23,9 @@
                 <div class="column"></div>
                 <div class="column"></div>
                 <div class="column"></div>
+                <div class="column"></div>
+                <div class="column"></div>
+                <div class="column"></div>
                 <div class="column  is-half is-offset-4"> Time: <span id="timeCountdown"></span></div>
             </div>
         </div>
@@ -31,7 +34,7 @@
 
 
     <!-- start card container  -->
-    <section class="hero has-background-white-bis is-fullheight">
+    <section class="hero  is-fullheight" id="viewPort">
         <div class="hero-body">
 
             <!-- Introduction Landing Page Begins -->
@@ -47,6 +50,7 @@
             <!-- Quiz Container -->
             <div class=" container has-background-link-light " id="quizContainer">
                 <h1 id="questionName"></h1>
+                <hr>
                 <div class="container" id="userAnswer">
                     <div class="row">
                         <button class="button is-link is-outlined" id='0'></button>
@@ -83,7 +87,7 @@
             <!-- Highscore Container Ends-->
 
         </div>
-
+      <div class="answerCheck" id="colorStatus"></div>
 
     </section>
 

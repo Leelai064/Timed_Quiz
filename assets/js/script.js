@@ -61,7 +61,7 @@ submitButtonEl.addEventListener("click",function(){
         highScores = JSON.parse(localStorage.getItem("finalScore")) || [];
         //usersScore.push('#highScore');
         highScores.push(usersScore);
-        console.log(usersScore);
+        // console.log(usersScore);
         localStorage.setItem("finalScore",JSON.stringify(highScores));
         show(highScoreContainerEl);
         renderHighScores();
@@ -110,7 +110,15 @@ function beginQuiz() {
 }
 
 function endQuiz() {
+    if(timeGiven <= 0){
     clearInterval(interval);
+    hide(startContainerEl);
+    show(scoresContainerEl);
+    } else{
+        clearInterval(interval);
+        hide(startContainerEl);
+        show(scoresContainerEl);
+    }
 }
 
 //The timer algorithm ends
@@ -124,7 +132,7 @@ function questioningBegins() {
     }
     else {
         endQuiz();
-        if ((timeGiven - Elapsedtime) > 0)
+        if ((timeGiven <=0))
             highScores += (timeGiven - Elapsedtime);
 
         hide(quizContainerEl);
@@ -135,7 +143,7 @@ function questioningBegins() {
 
 }
 
-//Note to self when question is answered correctly add 15 seconds
+//Note to self when question is answered incorrectly subtract 10 seconds
 
 function answerMatchup(answer) {
     if (questions[currentQArray].answer == questions[currentQArray].choices[answer.id]) {
@@ -143,10 +151,9 @@ function answerMatchup(answer) {
         displayMessage("Correct Answer!");
     }
     else {
-        Elapsedtime -= 10;
+        timeGiven -= 10;
         displayMessage("Incorrect Answer!");
     }
-
 }
 
 //function for displaying the answerMatchup messages
@@ -155,14 +162,18 @@ function displayMessage(alert) {
     let alertDivider = document.createElement("hr");
     let alertEl = document.createElement("div");
     alertEl.textContent = alert;
-    document.querySelector(".hero-body").appendChild(alertDivider);
-    document.querySelector(".hero-body").appendChild(alertEl);
+    document.querySelector(".answerCheck").appendChild(alertDivider);
+    document.querySelector(".answerCheck").appendChild(alertEl);
     setTimeout(function () {
         alertDivider.remove();
         alertEl.remove();
     }, 1000);
-
-    // 4 Second display before disappearance
+    if (document.getElementById('colorStatus').innerText.trim()  == "Correct Answer!") { 
+        document.getElementById('colorStatus').style.color = "Green";
+     } else{
+        document.getElementById('colorStatus').style.color = "Red";
+     }
+    // 1 Second display before disappearance
 }
 
 //Now we need to hide and show our elements they need functions. This can also be done another way by adding this to each section class in the HTML file.
@@ -213,4 +224,5 @@ function fullReset(){
     currentQArray = 0;
     Elapsedtime = 0;
     timerEl.textContent = 0;
+    timeGiven = 75;
 }
